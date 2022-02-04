@@ -4,6 +4,10 @@
 #text-color {
   color: greenyellow;
 }
+.serif {
+  font-family: serif;
+  text-decoration: underline;
+}
 h1 {
   font-size: 64px;
 }
