@@ -1,0 +1,21 @@
+html {
+  text-align: center;
+}
+/* 원래 이렇게 통째로 가운데 정렬시키면 안되고 블록을로 만들고 마진 오토? 이런식으로 해야되는듯 */
+.logo {
+  margin-top: 80px;
+}
+a {
+  color: #58595b;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.link {
+  margin-left: 20px;
+}
+div {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
