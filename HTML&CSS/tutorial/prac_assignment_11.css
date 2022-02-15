@@ -1,0 +1,48 @@
+/* 원본 CSS 코드 */
+/* h2 {
+  padding: 20px;
+}
+
+.box-one h2 {
+  font-size: 30px;
+  padding: 20px;
+  background: #fa987d;
+}
+
+.box-two h2 {
+  font-size: 30px;
+  padding: 20px;
+  background: #72cca7;
+}
+
+.box-three h2 {
+  font-size: 30px;
+  padding: 20px;
+  background: #fa987d;
+}
+
+.box-four h2 {
+  font-size: 30px;
+  padding: 20px;
+  background: #72cca7;
+}
+
+.box-five h2 {
+  font-size: 30px;
+  padding: 20px;
+  background: #fa987d;
+} */
+
+/* 코드를 열 줄(빈 줄 제외)로 줄일 것 */
+h2 {
+  padding: 20px;
+  font-size: 30px;
+}
+
+.box-one h2 {
+  background: #fa987d;
+}
+
+.box-two h2 {
+  background: #72cca7;
+}
