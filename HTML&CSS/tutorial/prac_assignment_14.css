@@ -1,0 +1,12 @@
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.mong {
+  position: relative;
+  bottom: 100px;
+  left: 200px;
+}
+/* top&right 방향 왜  반대..? */
+/* relative - 요소를 원래 있어야 되는 위치 기준으로 포지셔닝 해줌 */
