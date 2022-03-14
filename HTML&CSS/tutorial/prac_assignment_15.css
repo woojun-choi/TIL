@@ -1,0 +1,27 @@
+.quote {
+  font-size: 32px;
+  line-height: 32px;
+  text-align: center;
+  font-family: "Nanum Pen Script", cursive;
+  margin-top: 75px;
+}
+
+.con {
+  font-size: 300%;
+}
+
+.fir {
+  position: relative;
+  top: 20px;
+  margin-right: 15px;
+}
+
+.sec {
+  position: relative;
+  top: 80px;
+  margin-left: 15px;
+}
+
+.figure {
+  margin-top: 50px;
+}
