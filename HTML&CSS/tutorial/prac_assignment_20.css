@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  min-width: 768px;
+  font-family: "Noto Sans KR", sans-serif;
+
+  /* background-image: url("images/hero_header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; */
+}
+
+/* side navbar */
+
+#side-navbar {
+  background-color: black;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+}
+
+/* 코드를 입력하세요! */
+.main-logo {
+  /* 블록으로 바꿔줬어야 됐네,, */
+  display: block;
+  width: 136px;
+  margin: 30px auto 50px auto;
+  /* text-align: center; */
+}
+
+.menu {
+  padding-left: 22px;
+  margin-top: 0px;
+  margin-bottom: 60px;
+  /* 배경 때문에 안보였는데 구분점 있었네 주의하자 */
+  list-style: none;
+}
+
+.menu li:not(:last-child) {
+  /* 마지막 요소가 안들어가게 자식클래스? 사용 */
+  margin-bottom: 30px;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.etl {
+  text-align: center;
+  margin: 25px 0px 0px 0px;
+}
+
+.etl a {
+  text-decoration: none;
+}
+
+.fb {
+  width: 22px;
+  margin-right: 13px;
+}
+
+.tw {
+  width: 25px;
+  /* 이런건 그냥 html에서 속성?으로 적어줘도 될 듯 */
+}
+
+/* main */
+
+#main {
+  margin-left: 250px;
+}
+
+#main .hero-header {
+  text-align: center;
+  background-image: url("images/hero_header.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 750px;
+  line-height: 750px;
+}
+
+#main .info {
+  display: inline-block;
+  line-height: normal;
+  vertical-align: middle;
+}
+
+#main h1 {
+  margin: 0;
+  margin-bottom: 40px;
+  color: white;
+  font-size: 38px;
+}
+
+#main a {
+  padding: 10px 40px;
+  border: 2px solid white;
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
