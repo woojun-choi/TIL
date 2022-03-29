@@ -1,0 +1,318 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+#div1 {
+  background-color: #353535;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  color: white;
+  padding-left: 30px;
+  line-height: 60px;
+  /* vertical-align: middle; */
+}
+
+#div2 {
+  /* background-color: #ffa500; */
+  background-image: url("images/main_img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 350px;
+}
+
+#div3 {
+  /* background-color: #ffff00; */
+  width: 100%;
+  height: 320px;
+  padding-left: 30px;
+  padding-right: 30px;
+  /* vertical-align: middle; */
+  /* line-height: 320px; */
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -7px;
+}
+
+.container {
+  display: inline-block;
+  vertical-align: middle;
+  /* margin-left: -15px; */
+  /* 왜 쿼리랑 안나눠지냐 개빡치네.. 잘가.. */
+}
+
+.subtext {
+  font-size: 16px;
+  color: #4a4a4a;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.maintext {
+  font-size: 20px;
+  color: #1b1b1b;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+.detail {
+  font-size: 16px;
+  color: #7a7a7a;
+  margin: 0px;
+}
+
+#div4 {
+  /* background-color: #008000; */
+  background-image: url("images/img1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 385px;
+}
+
+#div5 {
+  /* background-color: #0000ff; */
+  background-image: url("images/img2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 200px;
+}
+
+.viewmore {
+  display: inline;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: 4px solid white;
+  padding: 9px 40px;
+  text-align: center;
+  margin: 0px;
+}
+
+#div6 {
+  /* background-color: #4b0082; */
+  background-image: url("images/img3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  width: 100%;
+  height: 200px;
+}
+
+@media (min-width: 768px) {
+  div {
+    float: left;
+  }
+
+  #div1 {
+    background-color: #353535;
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    padding-left: 30px;
+    line-height: 60px;
+    vertical-align: middle;
+  }
+
+  #div2 {
+    /* background-color: #ffa500; */
+    background-image: url("images/main_img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 562px;
+  }
+
+  #div3 {
+    /* background-color: #ffff00; */
+    width: 100%;
+    height: 282px;
+    padding-left: 65px;
+    padding-right: 65px;
+    /* vertical-align: middle; */
+    /* line-height: 320px; */
+  }
+
+  .subtext {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  .maintext {
+    font-size: 20px;
+    color: #1b1b1b;
+    margin: 0px;
+    margin-bottom: 30px;
+  }
+
+  .detail {
+    font-size: 16px;
+    color: #7a7a7a;
+    margin: 0px;
+  }
+
+  #div4 {
+    /* background-color: #008000; */
+    background-image: url("images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 50%;
+    height: 360px;
+  }
+
+  #div5 {
+    /* background-color: #0000ff; */
+    background-image: url("images/img2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 50%;
+    height: 180px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 180px;
+  }
+
+  .viewmore {
+    display: inline;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    border: 4px solid white;
+    padding: 9px 40px;
+    text-align: center;
+    margin: 0px;
+  }
+
+  #div6 {
+    /* background-color: #4b0082; */
+    background-image: url("images/img3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 50%;
+    height: 180px;
+  }
+}
+
+@media (min-width: 992px) {
+  div {
+    float: left;
+  }
+
+  #div1 {
+    /* background-color: #ff0000; */
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    color: white;
+    padding-left: 30px;
+    line-height: 60px;
+    vertical-align: middle;
+  }
+
+  #div2 {
+    /* background-color: #ffa500; */
+    background-image: url("images/main_img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 50%;
+    height: 700px;
+  }
+
+  #div3 {
+    /* background-color: #ffff00; */
+    width: 50%;
+    height: 350px;
+    padding-left: 65px;
+    padding-right: 65px;
+    /* vertical-align: middle; */
+    /* line-height: 350px; */
+  }
+
+  .subtext {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  .maintext {
+    font-size: 20px;
+    color: #1b1b1b;
+    margin: 0px;
+    margin-bottom: 30px;
+  }
+
+  .detail {
+    font-size: 16px;
+    color: #7a7a7a;
+    margin: 0px;
+  }
+
+  #div4 {
+    /* background-color: #008000; */
+    background-image: url("images/img1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 25%;
+    height: 350px;
+  }
+
+  #div5 {
+    /* background-color: #0000ff; */
+    background-image: url("images/img2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 25%;
+    height: 175px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 175px;
+  }
+
+  .viewmore {
+    display: inline;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    border: 4px solid white;
+    padding: 9px 40px;
+    text-align: center;
+  }
+
+  #div6 {
+    /* background-color: #4b0082; */
+    background-image: url("images/img3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    width: 25%;
+    height: 175px;
+  }
+}
