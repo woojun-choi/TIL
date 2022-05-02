@@ -1,17 +1,23 @@
-// console.log('Hello World!');
+const myNumberTag = document.getElementById('myNumber');
+const decreaseBtn = document.getElementById('decrease');
+const increaseBtn = document.getElementById('increase');
 
-function hi(a, b, c = 1, d = 2) {
-  console.log(c);
-  console.log(d);
-  //a+b+3
+let myNumber = +myNumberTag.textContent;
+
+decreaseBtn.onclick = function() {
+  myNumber--;
+  myNumberTag.textContent = myNumber;
+};
+
+increaseBtn.onclick = function() {
+  myNumber++;
+  myNumberTag.textContent = myNumber;
+};
+
+const colorBtns = document.getElementsByClassName('color-btn');
+
+for (let btn of colorBtns) {
+  btn.onclick = function() {
+    myNumberTag.style.color = btn.dataset.color;
+  };
 }
-
-// hi(1,2, d = 10);
-
-let tDate = new Date();
-
-// console.log(tDate.getDay());
-console.log(typeof tDate);
-
-console.log(typeof Date(2020,01,01));                  
-console.log(typeof new Date(2020, 01, 01));              
