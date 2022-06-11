@@ -204,22 +204,9 @@ class BinarySearchTree:
     def remove(self, data):
         remove_node = None #삭제 Node
         node = self._root # current
-        node_parent = None # parent 저장용
-        is_left_child = True #삭제 시 확인용 플래그
         
         if self.empty(): #예외 X, 아무것도 안하게
             return
-        
-        # while 1: # 삭제 노드 찾기 -무한 루프 가능성 있음
-        #     if data == node.data:
-        #         break
-        #     else:
-        #         if data < node.data:
-        #             node = node.left
-        #             is_left_child = True
-        #         else:
-        #             node = node.right
-        #             is_left_child = False
         
         while node: # 삭제 노드 찾기
             if data == node.data:
@@ -235,10 +222,12 @@ class BinarySearchTree:
         if node is None:
             raise IndexError("No data to delete")
         
-        remove_node = node
-        node_parent = node.parent
+        # raise IndexError(node.parent, node.data, node.left, node.right, node.parent.left, node.parent.right, node.parent.data)
+        
+        remove_node = node # 삭제할 노드객체
+        # remove_node = Node(data=node.data) # 삭제할 노드 복사
         # 자식 0개
-        if not node.left and not node.right:
+        if node.left == None and node.right == None:
             if node == self._root:
                 self._root = None
             elif data < node.parent.data:
@@ -247,16 +236,74 @@ class BinarySearchTree:
                 node.parent.right = None
         
         # 자식 1개
-        elif node.left and not node.right:
+        elif node.left != None and node.right == None: # 왼쪽 자식이 있을 때
             if node == self._root:
                 self._root = node.left
-        elif node.left and node.right:
+                # node.left.parent = None
+            elif data < node.parent.data:
+                node.parent.left = node.left
+                # node.left.parent = node.parent
+            else:
+                node.parent.right = node.left
+                # node.left.parent = node.parent
+        elif node.left and node.right:  # 오른쪽 자식이 있을 때
             if node == self._root:
-                self._root = node.left
+                self._root = node.right
+                # node.right.parent = None
+            elif data < node.parent.data:
+                node.parent.left = node.right
+                # node.right.parent = node.parent
+            else:
+                node.parent.right = node.right
+                # node.right.parent = node.parent
         
         # 자식 2개
+        else: # 왼쪽 최대가 아닌 오른쪽 최소로 교체해준다.
+            node_min_right = self.min(root=node.right, get_node=True) # 오른쪽 최소 구하기
+            
+            node.data = node_max_left.data # 데이터 교체
+            # raise IndexError(node, node.data, node.left, node.right, node.parent, node_min_right, node_min_right.data, node_min_right.parent, node_min_right.left, node_min_right.right)
+            if node == self._root: # parent가 없을 때 # 만약 최고 노드에 자식노드가 있을때- 오른쪽에 달린 것은 더 크니까 어차피 상관 없음 왼쪽에 달린 케이스만 확인하면 됨
+                if node_min_right.right: # 오른쪽 최소 노드에 오른쪽 자식이 달려있을 때
+                    pass
+                else:  # 최소 노드에 자식이 없을 때
+                    pass
+            elif data < node.parent.data: # 삭제할 노드가 왼쪽 자식인가
+                pass
+            else: # 삭제할 노드가 오른쪽 자식인가
+                if node_min_right.right:  # 오른쪽 최소 노드에 오른쪽 자식이 달려있을 때
+                    node_min_right.right.parent, node_min_right.parent.left = node_min_right.parent, node_min_right.right
+                else:  # 최소 노드에 자식이 없을 때
+                    node_min_right.parent.left = None  # 교체 노드의 연결 끊기
+                    # 오른쪽 최소 노드와 삭제 노드 교체
+                    node_min_right.parent, node_min_right.left, node_min_right.right = node.parent, node.left, node.right
+                    node.parent.right = node_min_right
+                    node.parent = node.left = node.right = None
+            
+            if 1:
+                node_max_left = self.max(root=node.left, get_node=True)
+                node.data = node_max_left.data  # 데이터 교체
+                # raise IndexError(node, node.data, node.left, node.right, node.parent, node_max_left, node_max_left.data, node_max_left.parent, node_max_left.left, node_max_left.right)
+                if node == self._root:  # parent가 없을 때 # 만약 최고 노드에 자식노드가 있을때- 오른쪽에 달린 것은 더 크니까 어차피 상관 없음 왼쪽에 달린 케이스만 확인하면 됨
+                    # node_max_left.parent = None
+                    if node_max_left.left:
+                        node_max_left.left.parent = node_max_left.parent
+                        node_max_left.parent.right = node_max_left.left
+                        node_max_left.parent = node_max_left.left = None
+                    else:
+                        node_max_left.parent = node_max_left.parent.right = None
+                elif data < node.parent.data:
+                    # node.parent.left = node_max_left.left
+                    node_max_left.parent.left = None
+                    node_max_left.parent = None
+                else:
+                    # node.parent.right = node_max_left.right
+                    node_max_left.parent.right = None
+                    node_max_left.parent = None
+
         
-        
+        self._num_nodes -= 1
+        raise IndexError(self.inorder(), self._root)
         return remove_node
     
     def clear(self):
@@ -282,8 +329,18 @@ class BinarySearchTree:
             return False
         else:
             return True
-      
 
+        # while 1: # 삭제 노드 찾기 -무한 루프 가능성 있음
+        #     if data == node.data:
+        #         break
+        #     else:
+        #         if data < node.data:
+        #             node = node.left
+        #             is_left_child = True
+        #         else:
+        #             node = node.right
+        #             is_left_child = False
+        
         #자식 X or 1개 -뭔가 안되는 듯?-?
         # if node.left is None: # 왼쪽 자식이 없을 때
         #     if node is self._root: # 삭제가 root면 오른쪽 연결
@@ -307,6 +364,28 @@ class BinarySearchTree:
         #         remove_node = node
         #         node.parent.right = node.left
         #     self._num_nodes -= 1
+        '''
+        else:
+            node_max_left = self.max(root=node.left, get_node=True)
+            node.data = node_max_left.data  # 데이터 교체
+            # raise IndexError(node, node.data, node.left, node.right, node.parent, node_max_left, node_max_left.data, node_max_left.parent, node_max_left.left, node_max_left.right)
+            if node == self._root:  # parent가 없을 때 # 만약 최고 노드에 자식노드가 있을때- 오른쪽에 달린 것은 더 크니까 어차피 상관 없음 왼쪽에 달린 케이스만 확인하면 됨
+                # node_max_left.parent = None
+                if node_max_left.left:
+                    node_max_left.left.parent = node_max_left.parent
+                    node_max_left.parent.right = node_max_left.left
+                    node_max_left.parent = node_max_left.left = None
+                else:
+                    node_max_left.parent = node_max_left.parent.right = None
+            elif data < node.parent.data:
+                # node.parent.left = node_max_left.left
+                node_max_left.parent.left = None
+                node_max_left.parent = None
+            else:
+                # node.parent.right = node_max_left.right
+                node_max_left.parent.right = None
+                node_max_left.parent = None
+        '''
         
         '''
         remove_node = node # 삭제할 노드
