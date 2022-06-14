@@ -132,8 +132,6 @@ class BinarySearchTree:
     #순회는 재귀가 아닌 while문을 사용할 것을 권장
     def preorder(self, get_node=False): #전위 순회
         traversal = [] # 결과값
-        # if self.empty(): # 예외 발생
-        #     raise IndexError("BinarySearchTree is empty")
         stack = [self._root]
         while stack:
             node = stack.pop()
@@ -146,8 +144,6 @@ class BinarySearchTree:
     
     def inorder(self, get_node=False): #중위 순회
         traversal = []
-        # if self.empty():
-        #     raise IndexError("BinarySearchTree is empty")
         stack = []
         node = self._root # current node
         while stack or node:
@@ -162,8 +158,6 @@ class BinarySearchTree:
     
     def postorder(self, get_node=False): #후위 순회
         traversal = []
-        # if self.empty():
-        #     raise IndexError("BinarySearchTree is empty")
         stack = [self._root]
         temp = []
         while stack:
@@ -212,8 +206,6 @@ class BinarySearchTree:
         node = self.search(data=data) # 삭제 노드 찾기
         if node is None:
             return
-            # raise IndexError("No data to delete")
-        
         # raise IndexError(node.parent, node.data, node.left, node.right, node.parent.left, node.parent.right, node.parent.data)
         # raise IndexError(self._root, self._root.data, self._root.left, self._root.right)
         
@@ -238,7 +230,7 @@ class BinarySearchTree:
             else:
                 node.left.parent = node.parent
                 node.parent.right = node.left
-        elif not node.left and node.right:  # 오른쪽 자식이 있을 때 node.left == None and node.right != None
+        elif not node.left and node.right:  # 오른쪽 자식이 있을 때 
             if node == self._root:
                 node.right.parent = None
                 self._root = node.right
@@ -251,16 +243,14 @@ class BinarySearchTree:
 
         # 자식 2개
         else:  # 왼쪽 최대가 아닌 오른쪽 최소로 교체해준다.
-            node_min_right = node.right
-            node_min_right = self.min(root=node_min_right, get_node=True)  # 오른쪽 최소 구하기
-            # raise IndexError(node, node.data, node.left, node.right, node.parent, node_min_right, node_min_right.data, node_min_right.parent, node_min_right.left, node_min_right.right)
-            # raise IndexError(node_min_right.count_children, node_min_right.children)
+            node_min_right = self.min(root=node.right, get_node=True)  # 오른쪽 최소 구하기
             node.data, node_min_right.data = node_min_right.data, node.data # 값 서로 바꾸기
             #4-1: 삭제 노드 바로 아래 최소 노드가 있을 때
-            if node.right == node_min_right and not node_min_right.left and not node_min_right:
-                node.right = None
-            elif node.right == node_min_right and node_min_right.right:
-                node.right, node_min_right.right.parent = node_min_right.right, node
+            if node.right == node_min_right:  # and node_min_right.count_children == 0
+                if node_min_right.right:
+                    node.right, node_min_right.right.parent = node_min_right.right, node
+                else:
+                    node.right = None
             #4-2: 최소 노드의 오른쪽 자식 노드가 존재할 때
             elif node_min_right.right:
                 node_min_right.parent.left, node_min_right.right.parent = node_min_right.right, node_min_right.parent
@@ -274,7 +264,6 @@ class BinarySearchTree:
         return remove_node
     
     def clear(self):
-        #traversal = []
         if self.empty():
             return True
         stack = [self._root]
@@ -287,7 +276,6 @@ class BinarySearchTree:
             if node.right:
                 stack.append(node.right)
         while temp:
-            #traversal.append(temp.pop())
             clear_node = temp.pop()
             clear_node.parent = clear_node.left = clear_node.right = None
         self._root = None
