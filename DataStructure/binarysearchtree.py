@@ -21,7 +21,7 @@ class Node:
     @left.setter
     def left(self, obj):
         if obj is not None and not isinstance(obj, Node):  
-            raise TypeError("next should refer to Node object.")
+            raise TypeError("left should refer to Node object.")
         self._left = obj
 
     @property
@@ -31,7 +31,7 @@ class Node:
     @right.setter
     def right(self, obj):
         if obj is not None and not isinstance(obj, Node):  
-            raise TypeError("next should refer to Node object.")
+            raise TypeError("right should refer to Node object.")
         self._right = obj
 
     @property
@@ -41,7 +41,7 @@ class Node:
     @parent.setter
     def parent(self, obj):
         if obj is not None and not isinstance(obj, Node):  
-            raise TypeError("next should refer to Node object.")
+            raise TypeError("parent should refer to Node object.")
         self._parent = obj
 
     def __str__(self):
@@ -51,20 +51,20 @@ class Node:
         return str(self)
 
     def count_children(self):
-        if self._left is None and self._right is None:
+        if not self.left and not self.right:
             return 0
-        elif self._left is None or self._right is None:
-            return 1
-        else:
+        elif self.left and self.right:
             return 2
+        else:
+            return 1
 
     def children(self):
         if self.count_children() == 2:
-          return [self._left, self._right]
-        elif self.count_children() == 1 and self._left:
-          return [self._left]
-        elif self.count_children() == 1 and self._right:
-          return [self._right]
+          return [self.left, self.right]
+        elif self.left:  # self.count_children() == 1 and => elif의 경우로 생각해보면 없어도 됨
+          return [self.left]
+        elif self._right:  # self.count_children() == 1 and
+          return [self.right]
         else:
           return []
 
@@ -114,7 +114,7 @@ class BinarySearchTree:
             self._num_nodes += 1
             return
         cur = self._root
-        while cur is not None:
+        while cur:  # is not None
             if data < cur.data:
                 if cur.left is None:
                     node.parent = cur
@@ -278,8 +278,8 @@ class BinarySearchTree:
         while temp:
             clear_node = temp.pop()
             clear_node.parent = clear_node.left = clear_node.right = None
+            self._num_nodes -= 1
         self._root = None
-        self._num_nodes = 0
         if self._num_nodes:
             return False
         else:
