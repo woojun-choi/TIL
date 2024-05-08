@@ -64,16 +64,47 @@ class SinglyLinkedList(object):
         self._num_nodes += 1
 
     def remove(self, i):
-        pass
+        if self.empty():
+            pass
+        elif i < 0 or i > self._num_nodes:
+            raise IndexError
+        
+        del_node = self._head
+        if i == 0:
+            self._head = self._head.next
+            del_node.next = None
+            if self._num_nodes == 1:
+                self._tail = None
+        else:
+            for idx in range(i - 1):
+                del_node = del_node.next
+            pre_node = del_node.next
+            del_node.next = pre_node.next
+            pre_node.next = None
+            if i == self._num_nodes - 1:
+                self._tail = del_node
+        self._num_nodes -= 1
 
     def clear(self):
-        pass
+        del_node = self._head
+        while del_node != None:
+            temp = del_node
+            del_node = del_node.next
+            temp.next = None
+        self._head, self._tail, self._num_nodes = None, None, 0
     
     def get(self, i):
-        if self.__len__() or i>self._num_nodes:
+        #if self.__len__() or i>self._num_nodes:
+        #    raise IndexError
+        if self.empty():
             raise IndexError
-        idx = 0
+        elif i < 0 or i > self._num_nodes:
+            raise IndexError
+        #idx = 0
         idx_node = self._head
+        for a in range(i):
+            idx_node = idx_node.next
+        return idx_node.data
     
     def pop(self, i=None):
         if self.empty():
@@ -103,7 +134,30 @@ class SinglyLinkedList(object):
         return pop_node.data
     
     def search(self, target, start=0):
-        pass
+        if self.empty():
+            raise IndexError
+        elif start < 0 or start >= self._num_nodes:
+            raise IndexError
+        
+        cur_node = self._head
+        i = 0
+        for a in range(start):
+            cur_node = cur_node.next
+            i += 1
+        
+        for b in range(self._num_nodes-start):
+            if cur_node.data == target:
+                return cur_node.data, i
+            cur_node = cur_node.next
+            i += 1
+        
+        return None, -1
 
     def extend(self, sll):
-        pass
+        if not isinstance(sll, SinglyLinkedList):
+            raise TypeError
+        else:
+            sll_node = sll._head
+            while sll_node != None:
+                self.insert(self._num_nodes, sll_node.data)
+                sll_node = sll_node.next
